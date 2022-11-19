@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".OnboardingActivity">
+    tools:context=".HomeActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to "
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:text="Home Screen"
+        android:textSize="50sp" />
 
 </LinearLayout>
