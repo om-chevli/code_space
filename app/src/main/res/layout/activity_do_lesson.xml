@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".DoLessonActivity">
+
+    <TextView
+        android:id="@+id/textview_lessonTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lesson Topic" />
+
+    <TextView
+        android:id="@+id/textview_lessonLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lesson Length" />
+
+    <TextView
+        android:id="@+id/textview_lessonDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description" />
+
+    <Button
+        android:id="@+id/button_lessonVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WATCH LESSON"/>
+
+    <WebView
+        android:id="@+id/webview_videoPlayer"
+        android:layout_width="320dp"
+        android:layout_height="225dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take Notes:"/>
+
+    <EditText
+        android:id="@+id/edittext_lessonNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/button_updateNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="SAVE NOTES"/>
+
+    <Button
+        android:id="@+id/button_lessonCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MARK COMPLETE"/>
+
+
+</LinearLayout>
