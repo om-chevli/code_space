@@ -1,7 +1,9 @@
 package com.example.codespace
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.util.Log
 import android.view.View
 import android.webkit.WebChromeClient
@@ -12,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar
 
 class DoLessonActivity : AppCompatActivity() {
     lateinit var binding: ActivityDoLessonBinding
+    private val user:UserData = UserData.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +26,8 @@ class DoLessonActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val user:UserData = UserData.getInstance()
+
+        val sharedPrefs = getDefaultSharedPreferences(baseContext)
 
         if (user.activeLesson != null){
             binding.textviewLessonTopic.text = "${user.getLessonNumber(user.activeLesson!!)}. ${user.activeLesson!!.topic}"
@@ -42,11 +47,21 @@ class DoLessonActivity : AppCompatActivity() {
             binding.edittextLessonNotes.setText(user.activeLesson!!.notes)
             binding.buttonUpdateNotes.setOnClickListener {
                 user.activeLesson!!.notes = binding.edittextLessonNotes.text.toString()
+
+                with(sharedPrefs!!.edit()){
+                    putString(user.lessons[user.lessons.indexOf(user.activeLesson)]!!.toString()+"notes", user.activeLesson!!.notes)
+                    apply()
                 Snackbar.make(binding.root, "Notes Saved!", Snackbar.LENGTH_SHORT).show()
+                }
             }
             binding.buttonLessonCompleted.setOnClickListener {
                 user.activeLesson!!.isComplete = true
                 user.lessons[user.lessons.indexOf(user.activeLesson)] = user.activeLesson!!
+
+                with(sharedPrefs!!.edit()) {
+                    putBoolean(user.lessons[user.lessons.indexOf(user.activeLesson)]!!.toString()+"checked", user.activeLesson!!.isComplete)
+                    apply()
+                }
                 user.activeLesson = null
                 finish()
             }

@@ -1,8 +1,11 @@
 package com.example.codespace
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.util.Log
 import android.widget.AdapterView
 import com.example.codespace.databinding.ActivityViewLessonsBinding
 import com.google.android.material.snackbar.Snackbar
@@ -10,20 +13,39 @@ import com.google.android.material.snackbar.Snackbar
 class ViewLessonsActivity : AppCompatActivity() {
     lateinit var binding: ActivityViewLessonsBinding
     lateinit var lessonsAdapter: LessonAdapter
+    private val user:UserData = UserData.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityViewLessonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 
     override fun onStart() {
         super.onStart()
-        val user:UserData = UserData.getInstance()
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(baseContext)
+        Log.d(this@ViewLessonsActivity.toString(), sharedPrefs.contains("name").toString())
+        if (sharedPrefs.contains("name")){
+            user.updateUserDataFromPrefs(sharedPrefs)
+        }
+        else{
+            user.createPrefs(sharedPrefs)
+        }
+
+
+
+
 
         binding.switchSeqProgress.setOnClickListener {
             user.sequentialProgress = binding.switchSeqProgress.isChecked
+            val sharedPrefs = this@ViewLessonsActivity?.getPreferences(Context.MODE_PRIVATE)
+            with(sharedPrefs!!.edit()){
+                putBoolean("sequentialProgress", user.sequentialProgress)
+                apply()
+            }
         }
 
         lessonsAdapter = LessonAdapter(this, user.lessons)

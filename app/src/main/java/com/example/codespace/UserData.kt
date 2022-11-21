@@ -1,5 +1,11 @@
 package com.example.codespace
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+import android.util.Log
+
 class UserData {
 
     companion object {
@@ -26,6 +32,17 @@ class UserData {
     var sequentialProgress = false
     var activeLesson:Lesson? = null
 
+    fun updateUserDataFromPrefs(preferences: SharedPreferences){
+
+
+        name = preferences.getString("name", name)
+
+        for (lesson in lessons){
+            lesson.notes = preferences.getString(lesson.toString()+"notes", lesson.notes)!!
+            lesson.isComplete = preferences.getBoolean(lesson.toString()+"checked", lesson.isComplete)!!
+        }
+    }
+
     fun getLessonNumber(lesson:Lesson):Int{
         return lessons.indexOf(lesson) + 1
     }
@@ -47,5 +64,19 @@ class UserData {
         }
 
         return newTime
+    }
+
+    fun createPrefs(preferences: SharedPreferences){
+
+        with(preferences.edit()){
+            Log.d(preferences.toString(), "Creating data")
+            putString("name", "Alex")
+            for (lesson in lessons){
+                putString(lesson.toString()+"notes", lesson.notes)
+                putBoolean(lesson.toString()+"checked", lesson.isComplete)
+
+            }
+            commit()
+        }
     }
 }
