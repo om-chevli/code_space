@@ -41,7 +41,8 @@ class SplashActivity : AppCompatActivity() {
             sharedPrefs.getString(
                 getString(R.string.prefs_username_key), null
             )
-        val nextScreen: Intent = if (currentUsername == null) {
+        println(currentUsername)
+        val nextScreen: Intent = if (currentUsername == null || currentUsername == "") {
             Intent(this, OnboardingActivity::class.java)
         } else {
             Intent(this, HomeActivity::class.java)
