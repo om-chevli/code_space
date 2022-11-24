@@ -24,10 +24,11 @@ class UserData {
 
     var name:String? = null
     var lessons = arrayListOf<Lesson>(
-        Lesson(R.drawable.one, "Topic 1", 10, "this is the content for topic 1", "https://www.youtube.com/watch?v=HIj8wU_rGIU"),
-        Lesson(R.drawable.two,"Topic 2", 20, "this is the content for topic 2", "https://www.youtube.com/watch?v=HIj8wU_rGIU"),
-        Lesson(R.drawable.three,"Topic 3", 30, "this is the content for topic 3", "https://www.youtube.com/watch?v=HIj8wU_rGIU"),
-        Lesson(R.drawable.four,"Topic 4", 80, "this is the content for topic 4", "https://www.youtube.com/watch?v=HIj8wU_rGIU")
+        Lesson(R.drawable.one, "Install and Setup for Mac and Windows", 16, "We will start with the basics of how to install and setup Python for Mac and Windows. We will also take a look at the interactive prompt, as well as creating and running our first script. Let's get started.", "https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PLNlXElf3dXzMOgHUs93ZFy4aBcLE7RjnP"),
+        Lesson(R.drawable.two,"Strings - Working with Textual Data", 21, "Strings allow us to work with textual data in Python. We will be going over different ways to format strings, and also a lot of useful string methods. Let's get started.", "https://www.youtube.com/watch?v=k9TUPpGqYTo&list=PLNlXElf3dXzMOgHUs93ZFy4aBcLE7RjnP"),
+        Lesson(R.drawable.three,"Integers and Floats - Working with Numeric Data", 12, "Integers and Floats allow us to work with numeric data in Python. We will be learning how to perform basic arithmetic, as well as how to compare numeric values. Let's get started.", "https://www.youtube.com/watch?v=khKv-8q7YmY&list=PLNlXElf3dXzMOgHUs93ZFy4aBcLE7RjnP"),
+        Lesson(R.drawable.four,"Lists, Tuples, and Sets", 29, "Lists and Tuples allow us to work with sequential data, and Sets allow us to work with unordered unique values. We will go over most of the methods, learn when to use which data type, and also the performance benefits of each type as well. Let's get started.", "https://www.youtube.com/watch?v=W8KRzm-HUcc&list=PLNlXElf3dXzMOgHUs93ZFy4aBcLE7RjnP"),
+        Lesson(R.drawable.five,"Dictionaries - Working with Key-Value Pairs", 10, "Dictionaries allow us to work with key-value pairs in Python. We will go over dictionary methods, how to add and remove values, and also how to loop through the key-value pairs. Let's get started.", "https://www.youtube.com/watch?v=daefaLgNkw0&list=PLNlXElf3dXzMOgHUs93ZFy4aBcLE7RjnP")
     )
     var sequentialProgress = false
     var activeLesson:Lesson? = null
