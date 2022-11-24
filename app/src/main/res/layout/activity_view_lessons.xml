@@ -3,24 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:layout_margin="8dp"
     tools:context=".ViewLessonsActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/adventpro_bold"
+        android:layout_marginTop="25dp"
         android:gravity="center"
-        android:text="Learning Code"/>
+        android:text="Learning Code"
+        android:textColor="@color/white"
+        android:textSize="28sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="Force Sequential Progression?"/>
 
         <Switch
@@ -33,6 +46,8 @@
     <ListView
         android:id="@+id/listview_lessons"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"/>
 
 </LinearLayout>

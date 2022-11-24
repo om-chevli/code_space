@@ -27,13 +27,18 @@ class DoLessonActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val sharedPrefs = getDefaultSharedPreferences(baseContext)
+        val sharedPrefs =
+            getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE
+            )
 
         if (user.activeLesson != null){
             binding.textviewLessonTopic.text = "${user.getLessonNumber(user.activeLesson!!)}. ${user.activeLesson!!.topic}"
-            binding.textviewLessonLength.text = "Length: ${user.convertLessonLength(user.activeLesson!!.lengthInMin)}"
+            binding.textviewLessonLength.text = "${user.convertLessonLength(user.activeLesson!!.lengthInMin)}"
             binding.textviewLessonDescription.text = user.activeLesson!!.description
             binding.buttonLessonVideo.setOnClickListener {
+                //remove button
+                binding.buttonLessonVideo.visibility = View.GONE
                 //play video
                 binding.webviewVideoPlayer.visibility = View.VISIBLE
                 binding.webviewVideoPlayer.webViewClient = WebViewClient()
@@ -49,7 +54,7 @@ class DoLessonActivity : AppCompatActivity() {
                 user.activeLesson!!.notes = binding.edittextLessonNotes.text.toString()
 
                 with(sharedPrefs!!.edit()){
-                    putString(user.lessons[user.lessons.indexOf(user.activeLesson)]!!.toString()+"notes", user.activeLesson!!.notes)
+                    putString(user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString()+"notes", user.activeLesson!!.notes)
                     apply()
                 Snackbar.make(binding.root, "Notes Saved!", Snackbar.LENGTH_SHORT).show()
                 }
@@ -59,7 +64,7 @@ class DoLessonActivity : AppCompatActivity() {
                 user.lessons[user.lessons.indexOf(user.activeLesson)] = user.activeLesson!!
 
                 with(sharedPrefs!!.edit()) {
-                    putBoolean(user.lessons[user.lessons.indexOf(user.activeLesson)]!!.toString()+"checked", user.activeLesson!!.isComplete)
+                    putBoolean(user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString()+"checked", user.activeLesson!!.isComplete)
                     apply()
                 }
                 user.activeLesson = null

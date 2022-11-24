@@ -21,29 +21,21 @@ class ViewLessonsActivity : AppCompatActivity() {
         binding = ActivityViewLessonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
     }
 
     override fun onStart() {
         super.onStart()
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(baseContext)
-        Log.d(this@ViewLessonsActivity.toString(), sharedPrefs.contains("name").toString())
-        if (sharedPrefs.contains("name")){
-            user.updateUserDataFromPrefs(sharedPrefs)
-        }
-        else{
-            user.createPrefs(sharedPrefs)
-        }
 
-
-
-
+        binding.switchSeqProgress.isChecked = user.sequentialProgress
 
         binding.switchSeqProgress.setOnClickListener {
             user.sequentialProgress = binding.switchSeqProgress.isChecked
-            val sharedPrefs = this@ViewLessonsActivity?.getPreferences(Context.MODE_PRIVATE)
+            val sharedPrefs =
+                getSharedPreferences(
+                    getString(R.string.preference_file_key), Context.MODE_PRIVATE
+                )
             with(sharedPrefs!!.edit()){
-                putBoolean("sequentialProgress", user.sequentialProgress)
+                putBoolean("FORCED_PROGRESSION", user.sequentialProgress)
                 apply()
             }
         }

@@ -34,12 +34,12 @@ class UserData {
 
     fun updateUserDataFromPrefs(preferences: SharedPreferences){
 
-
-        name = preferences.getString("name", name)
+        name = preferences.getString(R.string.prefs_username_key.toString(), name)
+        sequentialProgress = preferences.getBoolean("FORCED_PROGRESSION", sequentialProgress)
 
         for (lesson in lessons){
-            lesson.notes = preferences.getString(lesson.toString()+"notes", lesson.notes)!!
-            lesson.isComplete = preferences.getBoolean(lesson.toString()+"checked", lesson.isComplete)!!
+            lesson.notes = preferences.getString(lesson.icon.toString()+"notes", lesson.notes)!!
+            lesson.isComplete = preferences.getBoolean(lesson.icon.toString()+"checked", lesson.isComplete)!!
         }
     }
 
@@ -66,17 +66,18 @@ class UserData {
         return newTime
     }
 
-    fun createPrefs(preferences: SharedPreferences){
+    fun createPrefs(preferences: SharedPreferences, newName:String){
 
         with(preferences.edit()){
             Log.d(preferences.toString(), "Creating data")
-            putString("name", "Alex")
+            putString(R.string.prefs_username_key.toString(), newName)
+            putBoolean("FORCED_PROGRESSION", sequentialProgress)
+
             for (lesson in lessons){
                 putString(lesson.toString()+"notes", lesson.notes)
                 putBoolean(lesson.toString()+"checked", lesson.isComplete)
-
             }
-            commit()
+            apply()
         }
     }
 }

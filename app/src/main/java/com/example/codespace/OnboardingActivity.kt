@@ -11,6 +11,7 @@ import com.example.codespace.databinding.ActivityOnboardingBinding
 
 class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityOnboardingBinding
+    private val user:UserData = UserData.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,19 +45,22 @@ class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
         val name: String = binding.edtObName.text.toString().trim()
         println(name)
         if (name.length < 3) {
-            binding.edtObName.error = "Name should be atleast 3 characters long! "
+            binding.edtObName.error = "Name should be at least 3 characters long! "
             binding.edtObName.requestFocus()
         } else {
             val sharedPrefs: SharedPreferences = getSharedPreferences(
                 getString(R.string.preference_file_key),
                 MODE_PRIVATE
             )
+            user.createPrefs(sharedPrefs, name)
             with(sharedPrefs.edit()) {
                 this.putString(getString(R.string.prefs_username_key), name)
                 apply()
             }
+
             startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+
+            //finish()
         }
     }
 }

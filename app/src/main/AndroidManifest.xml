@@ -22,13 +22,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".OnboardingActivity"
             android:exported="false">
             <meta-data
@@ -37,6 +30,20 @@
         </activity>
         <activity
             android:name=".ViewLessonsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

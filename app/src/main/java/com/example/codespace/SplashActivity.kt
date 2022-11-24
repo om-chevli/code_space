@@ -44,10 +44,12 @@ class SplashActivity : AppCompatActivity() {
         println(currentUsername)
         val nextScreen: Intent = if (currentUsername == null || currentUsername == "") {
             Intent(this, OnboardingActivity::class.java)
+
         } else {
             Intent(this, HomeActivity::class.java)
+
         }
         startActivity(nextScreen)
-        finish()
+        //finish()
     }
 }

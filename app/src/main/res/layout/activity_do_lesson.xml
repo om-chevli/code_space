@@ -3,33 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
-    android:gravity="center_horizontal"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".DoLessonActivity">
 
     <TextView
         android:id="@+id/textview_lessonTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/white"
+        android:textSize="28sp"
         android:text="Lesson Topic" />
 
     <TextView
         android:id="@+id/textview_lessonLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:text="Lesson Length" />
 
     <TextView
         android:id="@+id/textview_lessonDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:text="Description" />
 
     <Button
         android:id="@+id/button_lessonVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
         android:text="WATCH LESSON"/>
 
     <WebView
@@ -38,28 +51,36 @@
         android:layout_height="225dp"
         android:visibility="gone"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Take Notes:"/>
+
 
     <EditText
         android:id="@+id/edittext_lessonNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"/>
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/ropasans_regular"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:hint="Take notes here:"
+        android:textAlignment="viewStart"
+        android:gravity="start"
+        android:inputType="textMultiLine"
+        />
 
     <Button
         android:id="@+id/button_updateNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="40dp"
         android:layout_gravity="right"
         android:text="SAVE NOTES"/>
 
     <Button
         android:id="@+id/button_lessonCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
         android:text="MARK COMPLETE"/>
 
 
