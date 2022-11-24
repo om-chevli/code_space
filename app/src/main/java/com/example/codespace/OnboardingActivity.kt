@@ -59,8 +59,7 @@ class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             startActivity(Intent(this, HomeActivity::class.java))
-
-            //finish()
+            finish()
         }
     }
 }

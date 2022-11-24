@@ -50,6 +50,6 @@ class SplashActivity : AppCompatActivity() {
 
         }
         startActivity(nextScreen)
-        //finish()
+        finish()
     }
 }
