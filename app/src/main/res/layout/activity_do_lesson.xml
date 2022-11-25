@@ -7,55 +7,54 @@
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".DoLessonActivity">
 
     <TextView
         android:id="@+id/textview_lessonTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
+        android:text="Lesson Topic"
         android:textColor="@color/colorPrimary"
-        android:textSize="28sp"
-        android:text="Lesson Topic" />
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/textview_lessonLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Lesson Length"
         android:textColor="@color/white"
-        android:textSize="22sp"
-        android:text="Lesson Length" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/textview_lessonDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
+        android:text="Description"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        android:text="Description" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button_lessonVideo"
         android:layout_width="140dp"
         android:layout_height="60dp"
-        android:text="WATCH LESSON"/>
+        android:text="WATCH LESSON" />
 
     <WebView
         android:id="@+id/webview_videoPlayer"
         android:layout_width="320dp"
         android:layout_height="225dp"
-        android:visibility="gone"/>
-
+        android:visibility="gone" />
 
 
     <EditText
@@ -64,33 +63,30 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
         android:fontFamily="@font/ropasans_regular"
+        android:gravity="start"
+        android:hint="Take notes here:"
+        android:inputType="textAutoCorrect|textMultiLine|textCapSentences"
+        android:maxHeight="170dp"
+        android:textAlignment="viewStart"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
-        android:hint="Take notes here:"
-        android:textAlignment="viewStart"
-        android:gravity="start"
-        android:inputType="textAutoCorrect
-        |textMultiLine
-        |textCapSentences"
-        android:maxHeight="170dp"
-        />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_updateNotes"
         android:layout_width="110dp"
         android:layout_height="50dp"
-        android:layout_marginHorizontal="40dp"
         android:layout_gravity="right"
-        android:text="SAVE NOTES"/>
+        android:layout_marginHorizontal="40dp"
+        android:text="SAVE NOTES" />
 
     <Button
         android:id="@+id/button_lessonCompleted"
         android:layout_width="140dp"
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
-        android:text="MARK COMPLETE"/>
+        android:text="MARK COMPLETE" />
 
 
 </LinearLayout>

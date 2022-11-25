@@ -10,21 +10,21 @@ import com.example.codespace.databinding.ActivitySplashBinding
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
-    private val user:UserData = UserData.getInstance()
+    private val user: UserData = UserData.getInstance()
     lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
-        sharedPrefs =
-            getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE
-            )
-            user.updateUserDataFromPrefs(sharedPrefs)
+    private fun onContinuePress() {
+        sharedPrefs = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
+        user.updateUserDataFromPrefs(sharedPrefs)
 
         startActivity(Intent(this, ViewLessonsActivity::class.java))
-
     }
 }
