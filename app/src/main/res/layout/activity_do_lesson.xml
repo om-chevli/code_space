@@ -20,7 +20,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="28sp"
         android:text="Lesson Topic" />
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:text="Lesson Length" />
 
     <TextView
@@ -41,7 +41,7 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:text="Description" />
 
     <Button
@@ -64,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="20dp"
+        android:textSize="20sp"
         android:fontFamily="@font/ropasans_regular"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
@@ -73,7 +74,7 @@
         android:inputType="textAutoCorrect
         |textMultiLine
         |textCapSentences"
-        android:maxHeight="200dp"
+        android:maxHeight="170dp"
         />
 
     <Button

@@ -53,10 +53,6 @@ class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
                 MODE_PRIVATE
             )
             user.createPrefs(sharedPrefs, name)
-            with(sharedPrefs.edit()) {
-                this.putString(getString(R.string.prefs_username_key), name)
-                apply()
-            }
 
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
