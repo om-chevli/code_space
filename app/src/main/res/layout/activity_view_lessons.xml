@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".ViewLessonsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="Python for Beginners"
+        android:textColor="@color/colorPrimary"
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+
+            android:gravity="center"
+            android:text="Force Sequential Progression?"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/switch_seqProgress"
+            android:layout_width="match_parent"
+            android:trackTint="@color/white"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_lessons"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
+        android:dividerHeight="20dp"/>
+
+</LinearLayout>

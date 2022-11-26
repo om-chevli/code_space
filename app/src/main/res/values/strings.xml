@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Code Space</string>
+    <string name="preference_file_key">PREFERENCE_FILE</string>
+    <string name="prefs_username_key">username</string>
 </resources>
