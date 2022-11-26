@@ -14,16 +14,21 @@ import com.example.codespace.databinding.ActivitySplashBinding
 class SplashActivity : AppCompatActivity() {
     lateinit var binding: ActivitySplashBinding
     lateinit var sharedPrefs: SharedPreferences
+    private var user: UserData = UserData.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSplashScreenAnimation()
         sharedPrefs =
             getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE
             )
+        setSplashScreenAnimation()
+    }
+
+    private fun setValuesToDataSource() {
+        user.updateUserDataFromPrefs(sharedPrefs)
     }
 
     private fun setSplashScreenAnimation() {
@@ -34,6 +39,7 @@ class SplashActivity : AppCompatActivity() {
         video.setOnCompletionListener {
             onAnimationComplete()
         }
+        setValuesToDataSource()
     }
 
     private fun onAnimationComplete() {
@@ -47,7 +53,6 @@ class SplashActivity : AppCompatActivity() {
 
         } else {
             Intent(this, HomeActivity::class.java)
-
         }
         startActivity(nextScreen)
         finish()

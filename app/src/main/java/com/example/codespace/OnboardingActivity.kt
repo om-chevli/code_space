@@ -5,13 +5,14 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.codespace.databinding.ActivityOnboardingBinding
 
 
 class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityOnboardingBinding
-    private val user:UserData = UserData.getInstance()
+    private val user: UserData = UserData.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +54,9 @@ class OnboardingActivity : AppCompatActivity(), View.OnClickListener {
                 MODE_PRIVATE
             )
             user.createPrefs(sharedPrefs, name)
-
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, ViewLessonsActivity::class.java))
+            Toast.makeText(applicationContext, "Welcome to Code Space $name!", Toast.LENGTH_LONG)
+                .show()
             finish()
         }
     }

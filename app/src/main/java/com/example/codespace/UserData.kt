@@ -3,10 +3,14 @@ package com.example.codespace
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
 import android.preference.PreferenceManager
+import android.provider.Settings.Global.getString
 import android.util.Log
 
 class UserData {
+
+    private constructor()
 
     companion object {
         @Volatile
@@ -65,7 +69,10 @@ class UserData {
 
     fun updateUserDataFromPrefs(preferences: SharedPreferences) {
 
-        name = preferences.getString(R.string.prefs_username_key.toString(), name)
+        name = preferences.getString(
+            "username",
+            name
+        )
         sequentialProgress = preferences.getBoolean("FORCED_PROGRESSION", sequentialProgress)
 
         for (lesson in lessons) {
@@ -81,6 +88,16 @@ class UserData {
 
     fun getPreviousLessonIndex(currentLesson: Lesson): Int {
         return lessons.indexOf(currentLesson) - 1
+    }
+
+    fun getCompletedLessonsCount(): Int {
+        var completedLessons: Int = 0
+        for (lesson in lessons) {
+            if (lesson.isComplete) {
+                completedLessons++
+            }
+        }
+        return completedLessons
     }
 
     fun convertLessonLength(minutes: Int): String {
@@ -102,7 +119,7 @@ class UserData {
 
         with(preferences.edit()) {
             Log.d(preferences.toString(), "Creating data")
-            putString(R.string.prefs_username_key.toString(), newName)
+            putString("username", newName)
             putBoolean("FORCED_PROGRESSION", sequentialProgress)
 
             for (lesson in lessons) {
@@ -110,6 +127,16 @@ class UserData {
                 putBoolean(lesson.toString() + "checked", lesson.isComplete)
             }
             apply()
+        }
+    }
+
+    fun resetObject() {
+        activeLesson = null
+        sequentialProgress = false
+        name = null
+        for (lesson in lessons) {
+            lesson.isComplete = false
+            lesson.notes = ""
         }
     }
 }

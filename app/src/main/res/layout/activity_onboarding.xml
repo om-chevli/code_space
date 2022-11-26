@@ -20,7 +20,8 @@
         android:gravity="center"
         android:text="Welcome To"
         android:textColor="@color/white"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="210dp"

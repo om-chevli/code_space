@@ -21,7 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class DoLessonActivity : AppCompatActivity() {
     lateinit var binding: ActivityDoLessonBinding
-    private val user:UserData = UserData.getInstance()
+    private val user: UserData = UserData.getInstance()
     var startedVideo = false
 
 
@@ -43,14 +43,14 @@ class DoLessonActivity : AppCompatActivity() {
             )
 
         binding.webviewVideoPlayer.setOnFocusChangeListener { view, focused ->
-            if (focused){
+            if (focused) {
                 requestFocusAndShowKeyboard(binding.edittextLessonNotes)
             }
         }
 
         binding.edittextLessonNotes.setOnFocusChangeListener { view, focused ->
 
-            if (!focused && !binding.webviewVideoPlayer.isFocused){
+            if (!focused && !binding.webviewVideoPlayer.isFocused) {
                 hideKeyboard(view)
                 binding.webviewVideoPlayer.onPause()
                 binding.webviewVideoPlayer.visibility = View.GONE
@@ -58,20 +58,21 @@ class DoLessonActivity : AppCompatActivity() {
             }
         }
 
-        if (user.activeLesson != null){
-            binding.textviewLessonTopic.text = "${user.getLessonNumber(user.activeLesson!!)}. ${user.activeLesson!!.topic}"
-            binding.textviewLessonLength.text = "${user.convertLessonLength(user.activeLesson!!.lengthInMin)}"
+        if (user.activeLesson != null) {
+            binding.textviewLessonTopic.text =
+                "${user.getLessonNumber(user.activeLesson!!)}. ${user.activeLesson!!.topic}"
+            binding.textviewLessonLength.text =
+                "${user.convertLessonLength(user.activeLesson!!.lengthInMin)}"
             binding.textviewLessonDescription.text = user.activeLesson!!.description
             binding.buttonLessonVideo.setOnClickListener {
 
                 //remove button
                 binding.buttonLessonVideo.visibility = View.GONE
                 //play video
-                if (startedVideo){
+                if (startedVideo) {
                     binding.webviewVideoPlayer.visibility = View.VISIBLE
                     binding.webviewVideoPlayer.onResume()
-                }
-                else{
+                } else {
                     binding.webviewVideoPlayer.visibility = View.VISIBLE
                     binding.webviewVideoPlayer.webViewClient = WebViewClient()
                     binding.webviewVideoPlayer.settings.javaScriptEnabled = true
@@ -88,10 +89,13 @@ class DoLessonActivity : AppCompatActivity() {
             binding.buttonUpdateNotes.setOnClickListener {
                 user.activeLesson!!.notes = binding.edittextLessonNotes.text.toString()
 
-                with(sharedPrefs!!.edit()){
-                    putString(user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString()+"notes", user.activeLesson!!.notes)
+                with(sharedPrefs!!.edit()) {
+                    putString(
+                        user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString() + "notes",
+                        user.activeLesson!!.notes
+                    )
                     apply()
-                Snackbar.make(binding.root, "Notes Saved!", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, "Notes Saved!", Snackbar.LENGTH_SHORT).show()
                 }
             }
             binding.buttonLessonCompleted.setOnClickListener {
@@ -99,14 +103,16 @@ class DoLessonActivity : AppCompatActivity() {
                 user.lessons[user.lessons.indexOf(user.activeLesson)] = user.activeLesson!!
 
                 with(sharedPrefs!!.edit()) {
-                    putBoolean(user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString()+"checked", user.activeLesson!!.isComplete)
+                    putBoolean(
+                        user.lessons[user.lessons.indexOf(user.activeLesson)].icon!!.toString() + "checked",
+                        user.activeLesson!!.isComplete
+                    )
                     apply()
                 }
                 user.activeLesson = null
                 finish()
             }
-        }
-        else{
+        } else {
             finish()
         }
     }

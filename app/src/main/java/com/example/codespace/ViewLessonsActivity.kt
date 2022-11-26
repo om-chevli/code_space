@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 class ViewLessonsActivity : AppCompatActivity() {
     lateinit var binding: ActivityViewLessonsBinding
     lateinit var lessonsAdapter: LessonAdapter
-    private val user:UserData = UserData.getInstance()
+    private val user: UserData = UserData.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class ViewLessonsActivity : AppCompatActivity() {
                 getSharedPreferences(
                     getString(R.string.preference_file_key), Context.MODE_PRIVATE
                 )
-            with(sharedPrefs!!.edit()){
+            with(sharedPrefs!!.edit()) {
                 putBoolean("FORCED_PROGRESSION", user.sequentialProgress)
                 apply()
             }
@@ -45,21 +45,28 @@ class ViewLessonsActivity : AppCompatActivity() {
 
         //add visual "gray out" to indicate which lessons are unavailable when switch is on
 
-        binding.listviewLessons.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        binding.listviewLessons.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
 
-            val clickedLesson = user.lessons[position]
+                val clickedLesson = user.lessons[position]
 
-            if (!user.sequentialProgress || user.getLessonNumber(clickedLesson) == 1 || user.lessons[user.getPreviousLessonIndex(clickedLesson)].isComplete){
-                user.activeLesson = clickedLesson
+                if (!user.sequentialProgress || user.getLessonNumber(clickedLesson) == 1 || user.lessons[user.getPreviousLessonIndex(
+                        clickedLesson
+                    )].isComplete
+                ) {
+                    user.activeLesson = clickedLesson
 
-                intent = Intent(this@ViewLessonsActivity, DoLessonActivity::class.java)
-                startActivity(intent)
+                    intent = Intent(this@ViewLessonsActivity, DoLessonActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Snackbar.make(
+                        binding.root,
+                        "You must complete the previous lesson to start this lesson",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+
+
             }
-            else{
-                Snackbar.make(binding.root, "You must complete the previous lesson to start this lesson", Snackbar.LENGTH_SHORT).show()
-            }
-
-
-        }
     }
 }
